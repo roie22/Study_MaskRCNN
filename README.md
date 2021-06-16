@@ -36,7 +36,7 @@ int main()
 }
 
 
-<img src=shotcut/2021-06-06 23-43-00 的屏幕截图.png     />
+<img src="shotcut/2021-06-06 23-43-00 的屏幕截图.png"     />
 
 
 
