@@ -1,0 +1,29 @@
+OpenCV(ocl4dnn): consider to specify kernel configuration cache directory
+                 via OPENCV_OCL4DNN_CONFIG_PATH parameter.
+OpenCL program build log: dnn/dummy
+Status -11: CL_BUILD_PROGRAM_FAILURE
+-cl-no-subgroup-ifp
+Error in processing command line: Don't understand command line argument "-cl-no-subgroup-ifp"!
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 8133 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2429 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2427 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2446 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2427 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2432 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2429 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2431 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2444 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2437 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2432 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2435 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2438 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2443 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2434 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2434 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2427 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2427 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2447 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2457 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2436 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2433 ms
+label = Mask-RCNN on 2.5 GHz Intel Core i7 CPU, Inference time for a frame : 2444 ms
