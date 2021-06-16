@@ -18,6 +18,11 @@ const char* keys =
         "{help h usage ? | | Usage examples: \n\t\t./mask-rcnn.out --image=traffic.jpg \n\t\t./mask-rcnn.out --video=sample.mp4}"
         "{image i        |<none>| input image   }"
         "{video v       |<none>| input video   }"
+        "{weight w       |<none>|    }"
+        "{config c       |<none>|    }"
+        "{classes s       |<none>|    }"
+        "{color r       |<none>|    }"
+        "{output o       |<none>|    }"
         ;
 using namespace cv;
 using namespace dnn;
@@ -47,13 +52,19 @@ int main_exc(int argc, char** argv)
         return 0;
     }
     // Load names of classes
-    string classesFile = "../Model/mscoco_labels.names";
+    String classesFile = "../Model/mscoco_labels.names";
+    classesFile =  parser.get<String>("classes");
+    std:: cout << "classesFile = " <<classesFile <<  std:: endl;
+
     ifstream ifs(classesFile.c_str());
     string line;
     while (getline(ifs, line)) classes.push_back(line);
     
     // Load the colors
-    string colorsFile = "../Model/colors.txt";
+    String colorsFile = "../Model/colors.txt";
+    colorsFile =  parser.get<String>("color");
+    std:: cout << "colorsFile = " <<colorsFile <<  std:: endl;
+
     ifstream colorFptr(colorsFile.c_str());
     while (getline(colorFptr, line)) {
         char* pEnd;
@@ -67,7 +78,12 @@ int main_exc(int argc, char** argv)
 
     // Give the configuration and weight files for the model
     String textGraph = "../Model/mask_rcnn_inception_v2_coco_2018_01_28.pbtxt";
+    textGraph =  parser.get<String>("config");
+    std:: cout << "config = " <<textGraph <<  std:: endl;
+
     String modelWeights = "../Model/mask_rcnn_inception_v2_coco_2018_01_28/frozen_inference_graph.pb";
+    modelWeights =  parser.get<String>("weight");
+    std:: cout << "weight = " <<modelWeights <<  std:: endl;
 
     // Load the network
     Net net = readNetFromTensorflow(modelWeights, textGraph);
@@ -76,17 +92,20 @@ int main_exc(int argc, char** argv)
     net.setPreferableTarget(DNN_TARGET_OPENCL);
     
     // Open a video file or an image file or a camera stream.
-    string str, outputFile;
+    String   outputFile;
     VideoCapture cap;
     VideoWriter video;
     Mat frame, blob;
-    
+    std::string  str;
     try {
         outputFile = "../TestData/mask_rcnn_out_cpp.avi";
+        outputFile = "./mask_rcnn_out_cpp.avi";
+        outputFile = parser.get<String>("output");
+
         if (parser.has("image"))
         {
             // Open the image file
-            str = parser.get<String>("image");
+            str = parser.get<cv::String>("image");
             //cout << "Image file input : " << str << endl;
             ifstream ifile(str);
             if (!ifile) throw("error");
@@ -106,10 +125,9 @@ int main_exc(int argc, char** argv)
         }
         // Open the webcam
         else cap.open(parser.get<int>("device"));
-        
     }
     catch(...) {
-        cout << "Could not open the input image/video stream" << endl;
+        std:: cout << "Could not open the input image/video stream" <<std:: endl;
         return 0;
     }
     
@@ -179,8 +197,14 @@ int main_exc(int argc, char** argv)
 
 int main()
 {
-    int argc=2;
-    char*  argv[]  = { "appMaskRcnn",  "-v=../TestData/cars.mp4"   };
+    int argc=7;
+    char*  argv[]  = { "appMaskRcnn"
+                       ,  "-v=../TestData/cars.mp4"
+                       , "--classes=../Model/mask_rcnn/mscoco_labels.names"
+                       ,  "--config=../Model/mask_rcnn/mask_rcnn_inception_v2_coco_2018_01_28.pbtxt"
+                       ,"--weight=../Model/mask_rcnn/mask_rcnn_inception_v2_coco_2018_01_28/frozen_inference_graph.pb"
+                       ,"--color=../Model/mask_rcnn/colors.txt"
+                       ,"--output=../TestData/out.avi"       };
     int res = main_exc(  argc,   argv) ;
 }
 
